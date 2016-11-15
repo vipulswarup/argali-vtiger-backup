@@ -9,11 +9,14 @@ mkdir $bak_folder
 mkdir $bak_folder_2
 
 
-mysqldump -u root vtiger_db > "$bak_folder_2/sql_dump.sql"
-
+#dump vtiger db
+mysqldump -u root vtiger_db > "$bak_folder_2/vtiger_db_sql_dump.sql"
+mysqldump -u root orangehrm_mysql > "$bak_folder_2/orangehrm_mysql_sql_dump.sql"
 
 #copy the vtiger install folder as well
 tar -cf "$bak_folder_2/vtigercrm.tar" /var/www/vtigercrm/
+#copy the orangehrm install folder as well
+tar -cf "$bak_folder_2/orangehrm.tar" /var/www/orangehrm/
 
 #check for pigz - multi threaded zip utility
 apt-get install pigz
